@@ -46,6 +46,12 @@ and use it on a locked door.
 - A list or dict containing the set of tiles
 - A game loop
 
+### Demo Two:
+- A set of tiles, some of which containing **item objects**. 
+- Items have a **unique description** before they are taken from the tile.
+- Player is able to take a drop items.
+- When an item is dropped, it has a more simple description in that tile.
+
 ### Program data/information
 
 - Coordinates and tile/character location should be on a 3D plane. This 
