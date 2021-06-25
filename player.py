@@ -1,5 +1,9 @@
 from action import Action
 
+# TODO give player self.location = get_location()
+# every time player.location is asked, it calls get lcoation
+# need to import world from tiles or something and have that
+# in the get_tile fucntion instead of 'tiles' as a param
 class Player:
     def __init__(self):
         self.x = 0
@@ -16,9 +20,12 @@ class Player:
         for item in self.inventory:
             print(item)
 
-    def take_item(self, item, tile):
-        self.inventory += item
-        tile.items -= item
+    def take_item(self, item_name, tile):
+        for item in tile.items:
+            if item.name.lower() == item_name:
+                self.inventory.append(item)
+                tile.items.remove(item)
+                break
 
     def move_north(self):
         self.y += 1
@@ -46,5 +53,10 @@ class Player:
                 self.available_actions.append(Action("Move West", self.move_west, ["west", "w"]))
         #return adj
 
+    # TODO possibly put this on the tile rather than as a player method
+    def get_actions(self, current_tile):
+        # Check if the tile has items
+        if current_tile.items:
+            self.available_actions.append(Action("Take Item", self.take_item, ["take"]))
 
 p = Player()
