@@ -1,39 +1,61 @@
-from tile import world
-from player import p
+from player import Player
+from world_map import TileMap, WORLD_MAP
 
-alive = True
 
-"""
-Game loop:
----------
+# NOTE: consider moving this to another file
+class InputHandler:
+    def __init__(self, player):
+        self.inp = None
+        self.player = player
 
-1. Print tile description
-2. Get available actions
-3. Ask input
-4. Parse input
-"""
-while alive:
-    # Check player position and print tile description
-    print(p.get_tile(world))
+    def get_input(self):
+        self.inp = input("What would you like to do?\n> ").lower()
 
-    # Reset list of available actions each tile/iteration
-    p.available_actions = []
-    p.get_adjacent_tiles(world)
+    def perform_action(self, w_map):
+        # NOTE: Can change the keyword checking after change with a list from an Action object.
+        match self.inp:
+            case ('north' | 'south' | 'east' | 'west') as direction:
+                # Get adjacent tiles
+                if direction in player.get_adjacent_tiles(w_map):
+                    player.move(direction)
+                else:
+                    print("Cannot move that way...\n")
 
-    # print("\n--------------\nAvailable actions:\n")
-    # for action in p.available_actions:
-    #     print(action.name)
+            case 'break':
+                # Kill player to end the loop.
+                print("Breaking loop by killing player. InputHandler function.")
+                player.hp = 0
 
-    # TODO If there is no action found, print a statement saying so.
-    # TODO Split the user input into keywords
 
-    user_input = input("What would you like to do?\n> ").lower()
+class Game:
+    def __init__(self):
+        pass
 
-    if user_input == "stop":
-        alive = False
-        break
+    def run(self, player, w_map):
 
-    for action in p.available_actions:
-        if user_input in action.hotkey:
-            action.function()
-            break
+        i_handler = InputHandler(player)
+        while player.is_alive:
+            # Print the tile information to the player
+            player_location = w_map.locate_object(player)
+            print(player_location, player_location.x, player_location.y)
+
+            # Ask for and handle the players input
+            i_handler.get_input()
+            i_handler.perform_action(w_map)
+
+
+if __name__ == "__main__":
+    # Create player
+    player = Player()
+
+    # Init map
+    world_map = TileMap()
+    world_map.generate_map(WORLD_MAP)
+
+    # Set players starting position
+    player_starting_location = world_map.player_start
+    player.set_location(player_starting_location.x, player_starting_location.y)
+
+    # Init and run game
+    game = Game()
+    game.run(player, world_map)

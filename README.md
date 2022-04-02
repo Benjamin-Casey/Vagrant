@@ -52,7 +52,7 @@ and use it on a locked door.
 - Player is able to take a drop items.
 - When an item is dropped, it has a more simple description in that tile.
 
-### Program data/information
+## Program data/information
 
 - Coordinates and tile/character location should be on a 3D plane. This 
   means using XYZ coordinate system, though Z coordinate may be able to

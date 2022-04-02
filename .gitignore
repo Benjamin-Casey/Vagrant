@@ -1,0 +1,11 @@
+*.pyc
+.obsidian/
+__pycache__/
+__pycache__/action.cpython-38.pyc
+__pycache__/items.cpython-38.pyc
+__pycache__/player.cpython-38.pyc
+__pycache__/tile.cpython-38.pyc
+__pycache__/action.cpython-38.pyc
+__pycache__/items.cpython-38.pyc
+__pycache__/player.cpython-38.pyc
+__pycache__/tile.cpython-38.pyc

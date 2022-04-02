@@ -1,0 +1,2 @@
+1. Give each item a "Taken" property. If an item has been taken, it prints its generic message on the tile. Otherwise, it prints a unique meessage.
+2. *IMPORTANT* - Available actions must be emtied and repopulated each loop cycle.
