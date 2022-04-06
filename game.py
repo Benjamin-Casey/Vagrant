@@ -9,9 +9,13 @@ class InputHandler:
         self.inp = None
         self.player = player
         self.w_map = w_map
+        self.player_location = None
 
     def get_input(self):
         self.inp = input("What would you like to do?\n> ").lower()
+
+    def set_player_location(self, tile):
+        self.player_location = tile
 
     def perform_action(self):
         # NOTE: Can change the keyword checking after change with a list from an Action object.
@@ -23,24 +27,15 @@ class InputHandler:
                 else:
                     print("Cannot move that way...\n")
 
-            # TODO: Fix having to capitalize the items. This will probably come with item objects instead of strings.
             case ['take', item]:
-                # Check if the item is on the tile. To do this, get the tile the player is on.
-                p_tile = self.w_map.locate_object(player)
-                if item.capitalize() in p_tile.items:
-                    # TODO: make this a player function.
-                    player.inventory.append(item)
-                    p_tile.items.remove(item.capitalize())
+                player.take_item(item, self.player_location)
 
             case ['inventory'] | ['check', 'inventory']:
-                if player.inventory:
-                    player.print_inventory()
-                else:
-                    print("You have no items in your inventory!")
+                player.print_inventory()
 
             case ['break']:
                 # Kill player to end the loop.
-                print("Breaking loop by killing player. InputHandler function.")
+                print("Breaking loop by killing player. (InputHandler function)")
                 player.hp = 0
 
 
@@ -58,6 +53,7 @@ class Game:
 
             # Ask for and handle the players input
             i_handler.get_input()
+            i_handler.set_player_location(player_location)
             i_handler.perform_action()
 
 
