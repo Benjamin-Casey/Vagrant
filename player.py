@@ -32,27 +32,6 @@ class Player:
                 self.x -= 1
 
     def set_location(self, x: int, y: int) -> tuple:
-        self.x == x
-        self.y == y
+        self.x = x
+        self.y = y
         return (self.x, self.y)
-
-    def get_adjacent_tiles(self, world: list) -> list:
-        adjacent_tiles = {}
-        for tile in world.tile_map:
-            if tile.x == self.x and tile.y == self.y + 1:
-                adjacent_tiles['north'] = tile
-                # self.available_actions.append(
-                    # Action("Move North", self.move_north, ["north", "n"]))
-            elif tile.x == self.x and tile.y == self.y - 1:
-                adjacent_tiles['south'] = tile
-                # self.available_actions.append(
-                    # Action("Move South", self.move_south, ["south", "s"]))
-            elif tile.y == self.y and tile.x == self.x + 1:
-                adjacent_tiles['east'] = tile
-                # self.available_actions.append(
-                    # Action("Move East", self.move_east, ["east", "e"]))
-            elif tile.y == self.y and tile.x == self.x - 1:
-                adjacent_tiles['west'] = tile
-                # self.available_actions.append(
-                    # Action("Move West", self.move_west, ["west", "w"]))
-        return adjacent_tiles

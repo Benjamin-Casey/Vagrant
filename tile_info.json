@@ -1,0 +1,22 @@
+{
+    "f": {
+        "name": "Forest",
+        "description": "Dense trees surround you",
+        "items": [
+            "Stick"
+        ]
+    },
+    "c": {
+        "name": "Cave",
+        "description": "The entrance of a dark cave",
+        "items": [
+            "Rock"
+        ]
+    },
+    "p": {
+        "name": "Starting Tile",
+        "description": "This is the starting tile",
+        "items": []
+    }
+    
+}
