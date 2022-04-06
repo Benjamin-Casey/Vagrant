@@ -8,6 +8,7 @@ WORLD_MAP = [
 ]
 
 map_info = json.load(open(file="./tile_info.json", encoding='utf-8'))
+item_info = json.load(open(file="./items.json", encoding="utf-8"))
 
 
 class TileMap:
@@ -24,7 +25,14 @@ class TileMap:
         for row_index, row in enumerate(prelim_map):
             for col_index, col in enumerate(row):
                 prelim_map_keyword = prelim_map[row_index][col_index]
+
+                # Get tile info, if there are items, create an item object
                 tile_info = map_info[prelim_map_keyword]
+                item_info = tile_info['items']
+
+                # TODO: Turn this into an item builder
+                # Insert Item Builder here
+
                 self.tile_map.append(
                     Tile(row_index, col_index, tile_info['description'], tile_info['name'], tile_info['items']))
 

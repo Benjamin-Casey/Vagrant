@@ -6,11 +6,11 @@ kanban-plugin: basic
 
 ## To do
 
-- [ ] Items objects are generated from JSON
 
 
 ## In progress
 
+- [ ] Items objects are generated from JSON
 
 
 ## Complete

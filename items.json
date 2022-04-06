@@ -1,0 +1,9 @@
+{
+    "dagger": {
+        "name": "Dagger",
+        "type": "Weapon",
+        "description": "A rusty old dagger",
+        "value": "10",
+        "attack": "5"
+    }
+}
