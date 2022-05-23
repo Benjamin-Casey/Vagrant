@@ -18,11 +18,14 @@ class Weapon(Item):
         self.description = description
         self.attack = attack
 
+
 class ItemBuilder:
-    def build_item(self, item_list : list) -> list:
+    def build_item(self, item_list: list) -> list:
         # Check that the list isn't empty
         if len(item_list) > 0:
             # Cross-reference the item with item_data from items.json
             for item in item_list:
                 if item.lower() in item_info.keys():    # Check that the item name is in item_info
-                    if item_info[item.lower()]
+                    if item_info[item.lower()]:
+                        # TODO
+                        pass
